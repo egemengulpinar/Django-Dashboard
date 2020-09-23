@@ -1,0 +1,67 @@
+
+<div id = "MyDiv">
+</div>
+
+<p id = "myP"> MERHABAAAA111 </p>
+</div>
+<br>
+
+<div id ="myDiv2">
+<p id="myP2"> Deneeme1 </p>
+</div>
+
+
+
+<script>
+
+
+var myP = document.getElementById("myP");
+
+var myP2  = document.getElementById("myP2")
+
+myP.addEventListener("click",changeText);
+
+function changeText()
+{
+
+myP2.textContent  = "selam";
+
+
+
+};
+
+</script>
+
+
+<select name="Customer_ID" id="Customer_ID">
+    <option value="0">None</option>
+          <option title="email1@sample.com" value="1">user1</option>
+          <option title="emaifrwrfafsample.com" value="2">user2</option>
+          <option title="email3@sample.com" value="3">user3</option>
+          <option title="email4@sample.com" value="4">user4</option>
+        </select>
+        
+        <div class="form-field">
+  <label for="Order_Email"></label>
+  <input type='text' name="Order_Email" id="Order_Email" />
+</div>
+<fieldset disabled>
+ <div class="form-group">
+      <label for="disabledTextInput">Şirket Bilgisi</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder="Şirket">
+
+    </div>
+     </fieldset>
+<div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+    $('#Customer_ID').change(function() {
+    var email = $(this).find("option:selected").attr("title");
+    $('#disabledTextInput').val(email);
+});
+});
+
+</script>
+

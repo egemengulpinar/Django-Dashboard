@@ -1,0 +1,216 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% block body  %}
+<p  style = "color:red"; "text-indent:50px"> 
+    Hoşgeldiniz,<small>{{request.user.username}}</small>
+</p>
+
+<div class="jumbotron jumbotron-fluid text-center">
+  <h1 class="display-2">Transfer ve Şirket Bilgileri</h1 >
+</div>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+</head>
+<body>
+  <style>
+  th {
+  cursor: pointer;
+}
+
+
+  </style>
+
+<div class = "row">
+
+<div class = "col">
+
+
+<div class="card card-body bg-dark text-light">
+
+<div class="col-10 text-right">
+<form method ="get">
+
+{{myFilter.form}}
+&#160;&#160;&#160;&#160;&#160;
+<button type="submit" style="text-right;"  class="btn btn-danger mb-6">&#160; &#160; &#160; Filtrele &#160; &#160; &#160; </button>
+
+</button>
+
+</form>
+</div>
+</div>
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+{% if sirketler and transferler %} <!-- eğer hiç şirketimiz yoksa  veya varsa kontrolünun yapıldığı kısım-->
+
+<form>
+  <div class="form-group">
+{% csrf_token %}
+
+     <div class="input-group mb-3">
+  <div class="input-group-prepend">  
+  </div>
+  <input type="text" class="form-control" name="keyword" type="text" placeholder="Şirket veya Yolcuya Göre Arama Yapın" style="text-align:center; font-size:25px"  >
+  <button type="submit" style="text-align:center; font-size:25px" class="btn btn-danger mb-6">&#160; &#160; &#160; Ara &#160; &#160; &#160; </button>
+
+
+  
+
+    </div>
+    </form>
+
+
+<table id="myTable" class="table table-dark">
+  <thead>
+    <tr>
+    
+      <th onclick="sortTable(0)" scope="col">id</th>
+      <th onclick="sortTable(1)" scope="col">Şirket Adı</th>
+      <th onclick="sortTable(2)" scope="col">Yolcu Ismi </th>
+      <th onclick="sortTable(3)" scope="col">Transfer Ucreti</th>
+      <th onclick="sortTable(4)"scope="col">Transfer Tarihi</th>
+      <th onclick="sortTable(5)"scope="col">Ev Adresi</th>
+      <th onclick="sortTable(6)"scope="col">Şirket Adresi</th>
+      <th scope="col">Güncelle</th>
+      <th scope="col">Sil</th>
+      <th cope="col">Detay</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+
+  
+  <!-- Tek bir for döngüsü içinde transfer modelinin transfer.sirket_bilgisi parametresi sayesinde UserProfil modeline erişim sağlanabiliyor.-->
+     
+  {% for transfer in transferler  %}
+  <td>{{transfer.musteri.sirket_bilgisi.id}}</td>
+     <td><a href="{% url 'transferapp:sirket_detail' transfer.id %}" class="link">{{transfer.musteri.sirket_bilgisi}}</a></td>
+    
+    <td><a href="{% url 'transferapp:musteri_detail' transfer.id %}" class="link">{{transfer.musteri.ad_soyad}}</a></td>
+   
+      <td>{{transfer.transfer_ucreti}}</td>
+    
+      <td>{{transfer.transfer_tarihi}}</td>
+       <td>{{transfer.musteri.ev_adresi}}</td>
+        <td>{{transfer.musteri.is_adresi}}</td>
+      <td><a href= "{% url 'transferapp:update' transfer.id%}" class = "btn btn-secondary"> Güncelle </a> </td>
+      <td><a href= "{% url 'transferapp:delete' transfer.id%}" class = "btn btn-danger"> Sil </a> </td>
+      <td><a href="{% url 'transferapp:detail' transfer.id %}"class = "btn btn-success">DETAY&raquo;</a> </td>
+  
+  
+  
+  
+  
+    
+      
+     
+      
+      
+      </tr>  
+      
+
+  {% endfor %}
+  
+   
+   
+    
+  </tbody>
+</table>
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>
+
+{% else %}
+
+<div class = "alert alert-danger">
+    Henüz bir transfer bulunmamaktadır.
+
+    
+<a class = "btn btn-danger" href="/transfer/kontrol_paneli/" > Transfer Sayfasına Geri Dön </a>
+</div>
+
+{% endif %}
+
+<div class="row">
+  <div class="col-auto mr-auto"><a class = "btn btn-danger" href="/transfer/transfer_ekle" > Transfer Ekle </a>
+<a class = "btn btn-danger" href="/sirket/sirket_ekle" > Şirket Ekle </a>
+<a class = "btn btn-danger" href="/musteri/musteri_ekle" > Müşteri Ekle </a></div>
+
+  <div class="col-auto"> <a class = "btn btn-danger"  href="/transfer/kontrol_paneli/" > Aramayı Temizle </a></div>
+</div>
+
+
+<hr>
+
+
+{% endblock body %}

@@ -1,0 +1,31 @@
+.logo-img{
+    float: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%; width: 8%;
+    
+}
+
+.svg {
+    overflow: hidden;
+    vertical-align: middle;
+  }
+
+.text-gray-300 {
+    color: #dddfeb !important;
+}
+
+.border-left-success {
+    border-left: 0.25rem solid #1cc88a !important;
+  }
+  .border-left-primary {
+    border-left: 0.25rem solid #4e73df !important;
+  }  
+  .sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-heading {
+    padding: 1.75rem 1rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }  

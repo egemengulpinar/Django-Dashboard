@@ -1,0 +1,37 @@
+#dataTable td, #dataTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    margin-left: auto;
+  margin-right: auto;
+  }
+  #dataTable tr:nth-child(){background-color:whitesmoke;}
+  table.dataTable tbody{background-color: white;}
+#dataTable tr:hover {background-color: #ddd;}
+
+#dataTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: lightslategray;
+  color: white;
+  
+}
+.center{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+
+.h8{
+  font-size: 50px;
+  font-weight: 500px;
+}    
+
+table.dataTable tbody tr.selected, table.dataTable tbody th.selected, table.dataTable tbody td.selected {
+  color:cornflowerblue;
+  background-color:  papayawhip;
+  
+}
+

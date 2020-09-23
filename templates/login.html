@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+<div class="jumbotron jumbotron-fluid " >
+  <h1 class="display-2" style : "font-size:50px">Giriş Yap</h1 >
+  </div>
+    <div class="row">
+  <div class="col-md-4">
+
+
+<form method="post" "color:red" enctype="multipart/form-data" style="color:red; font-size:16px; font-weight:720">
+{% csrf_token %} <!-- formlarda güvenlik için hep yazılması gerekli -->
+
+{{form|crispy}}
+<br>
+<br>
+<button type = "submit" class = "btn btn-danger">Giriş Yap</button>
+<!--<input type="submit" value="Submit"> aynı işlem yukarıdaki ile,ister button ister input -->
+</form>
+</div>
+  </div>
+</div>
+
+{% endblock body %}
+
+

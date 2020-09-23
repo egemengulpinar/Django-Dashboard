@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- TABLO OLMAYAN SAYFALAR ICIN BU NAVIGASYON BARI KULLLANILACAK-->
+{% load crispy_forms_tags %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+ <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+       <link href="{% static 'css/table_custom.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/deneme.css' %}" rel="stylesheet" />
+      
+         
+       
+       <link href="{% static 'css/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css" />
+       
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+        
+
+</head>
+<body class="sb-nav-fixed ">
+     <div style = "margin-top : 70px;" class = "container">
+            {% if messages %}
+        
+            {% for message in messages %}
+            {% if message.tags == "info" %}
+            <div class="alert alert-danger">{{ message }}</div>
+            {% else %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div> <!-- başka görünümler için dokumanı ıncele-->
+            {% endif %}
+            
+            {% endfor %}
+        
+        {% endif %}
+        </div>
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" >
+            &#160; &#160;<a class= href="index.html" style="color:#ebaf4c; font-size:25px; font-family:Arial ">Menü</a>
+
+              <a class= href="#">
+     <img class="logo-img" src="{% static 'resimler/Proje_logo_beyaz_son.png' %}" style="width:150px;"  alt="Logo">
+  </a>
+            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars" style="font-size:21px;"></i></button>
+            <!-- Navbar Search-->
+            
+            <!-- Navbar-->
+            <ul class="navbar-nav ml-auto ml-md-6">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" style="color:#ebaf4c; font-size:20px" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="True"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right " aria-labelledby="userDropdown">
+                        <a class="dropdown-item" style="font-size:15px; color:#;" href="{% url 'transferapp:profil'  %}">Profil</a>
+                  
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" style="font-size:13px; color:#;" href="login.html"></a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+           <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" >
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading" style="color:#ebaf4c;text-align:center; font-size: 1.2rem; font-family:Segoe UI">Ana Panel</div>
+                            <a class="nav-link"style="color:#; font-size:20px; font-family:Arial" href="{% url 'transferapp:ana_kontrol_panel'  %}">
+                                <div class="sb-nav-link-icon" style="color:#ebaf4c; font-size:20px"><i class="fas fa-tachometer-alt"></i></div>
+                                &#160;&#160;Kontrol Paneli
+                          </a><hr style="width:100%;border-top:1px solid white"> </a> </hr>
+                            
+                            
+                            <div class="sb-sidenav-menu-heading" style="color:#ebaf4c;text-align:center; font-size: 1.2rem; font-family:Segoe UI">Tablolar</div>
+                            
+                            <a class="nav-link" style="color:#;  font-size:20px; font-family:Arial " href="{% url 'transferapp:kontrol_paneli'  %}">
+                                <div class="sb-nav-link-icon" style="color:#ebaf4c;font-size:20px"><i class="fas fa-table"></i></div>
+                                &#160;&#160;Transfer Tablosu &#160;&#160;ve&#160;Mutabakat
+                            </a>
+                            <br><br>
+                           <a class="nav-link" style="color:#;  font-size:20px; font-family:Arial; margin-top:-11px; " href="{% url 'transferapp:sofor_tablo'  %}">
+                                <div class="sb-nav-link-icon" style="color:#ebaf4c;font-size:20px ; "><i class="fas fa-table"></i></div>
+                                &#160;&#160;Şöför Tablosu
+                            </a>
+                             <br><br>
+                                <a class="nav-link" style="color:#;  font-size:20px; font-family:Arial; margin-top:-11px; " href="{% url 'transferapp:sirket_tablo'  %}">
+                                <div class="sb-nav-link-icon" style="color:#ebaf4c;font-size:20px ; "><i class="fas fa-table"></i></div>
+                                &#160;&#160;Şirket Tablosu
+                            </a>   
+                            </a>
+                            <br>
+                            
+                            
+                             </a><hr style="width:100%;border-top:1px solid white"> </a> </hr>
+                             <div class="sb-sidenav-menu-heading" style="color:#ebaf4c;text-align:center; font-size: 1.2rem; font-family:Segoe UI">Ekleme İşlemleri</div>
+                            <a class="nav-link" style="color:#;  font-size:22px; font-family:Arial"  href="{% url 'transferapp:transfer_ekle'%}">
+                               <br><br> <div class="sb-nav-link-icon" style="color:#ebaf4c; font-size:20px"> <i class="fas fa-chart-area"></i></div>
+                                &#160;&#160;Transfer Ekle
+                           <a class="nav-link" style="color:#;  font-size:22px; font-family:Arial ; margin-top:-11px;"  href="{% url 'sirketapp:sirket_ekle'%}">
+                               <br><br> <div class="sb-nav-link-icon" style="color:#ebaf4c; font-size:20px;"> <i class="fas fa-chart-area"></i></div>
+                                &#160;&#160;Şirket ve Çalışan &#160; Ekle
+                                <a class="nav-link" style="color:#;  font-size:22px; font-family:Arial ; margin-top:-11px;"  href="{% url 'aracsoforapp:sofor_ekle'%}">
+                               <br><br> <div class="sb-nav-link-icon" style="color:#ebaf4c; font-size:20px;"> <i class="fas fa-chart-area"></i></div>
+                                &#160;&#160;Şöför Ekle
+                               </a><hr style="width:100%;border-top:1px solid white"> </a> </hr>
+                            
+                            
+                           
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer" style="text-align:center">
+                          <span style="color:#ebaf4c;font-family:Arial Black;font-size:10px;text-align:center">Copyright &copy; Egemen Gülpınar</span>
+                    </div>
+                </nav>
+            </div>
+            
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{% static "js/scripts.js" %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{% static "assets/demo/chart-area-demo.js" %}"></script>
+        <script type="text/javascript" src="{% static "assets/demo/chart-bar-demo.js" %}"></script>
+           <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+             <script type="text/javascript" src="{% static "js/scripts.js" %}"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+         
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
