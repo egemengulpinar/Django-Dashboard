@@ -18,4 +18,5 @@ pip install bootstrap3-datetime
 <br>
 pip install django-filter
 
+![1](https://user-images.githubusercontent.com/71253469/100092891-d8476980-2e67-11eb-9bfa-65a50cc0522b.jpg)
 
