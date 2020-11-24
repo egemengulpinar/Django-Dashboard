@@ -17,3 +17,6 @@ pip install django-ckeditor
 pip install bootstrap3-datetime
 <br>
 pip install django-filter
+
+
+![alt text](https://drive.google.com/file/d/1XqbZp5o9uTSqIfEOB9P9b7fntObsB06y/view?usp=sharing)
