@@ -14,6 +14,8 @@ pip install pandas
 <br>
 pip install django-ckeditor
 <br>
+
+![Alt Text](https://media.giphy.com/media/xgDs14Sdqnyy5yuwGa/giphy.gif?cid=790b7611c161c1d5367ed36ff6df26b8558d7fa88df07607&rid=giphy.gif&ct=g)
 pip install bootstrap3-datetime
 <br>
 pip install django-filter
