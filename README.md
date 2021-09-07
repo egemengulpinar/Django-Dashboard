@@ -27,7 +27,7 @@ passenger details in the passenger table.
 Clone project
 
 ```bash
-  git clone https://github.com/egemengulpinar/mydjangoapp.git
+  git clone https://github.com/egemengulpinar/Django-Dashboard.git
 ```
 
 Install Django Framework
