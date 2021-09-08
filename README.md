@@ -8,7 +8,14 @@ passenger details in the passenger table.
 ![Logo](https://www.linkpicture.com/q/Main-page2.png)
 
     
+## Demo
 
+
+
+  
+![Alt Text](https://media.giphy.com/media/xgDs14Sdqnyy5yuwGa/giphy.gif?cid=790b7611c161c1d5367ed36ff6df26b8558d7fa88df07607&rid=giphy.gif&ct=g)
+
+![Alt Text](https://media.giphy.com/media/g1coW9BGCm3BxcxDmB/giphy.gif?cid=790b76115f4727a9d97ddfbd9b79963fb7a7c1f002c72900&rid=giphy.gif&ct=g)
     
 ## Requirements
 
@@ -56,14 +63,7 @@ Running
 ```
 
   
-## Demo
 
-
-
-  
-![Alt Text](https://media.giphy.com/media/xgDs14Sdqnyy5yuwGa/giphy.gif?cid=790b7611c161c1d5367ed36ff6df26b8558d7fa88df07607&rid=giphy.gif&ct=g)
-
-![Alt Text](https://media.giphy.com/media/g1coW9BGCm3BxcxDmB/giphy.gif?cid=790b76115f4727a9d97ddfbd9b79963fb7a7c1f002c72900&rid=giphy.gif&ct=g)
 
 
 
