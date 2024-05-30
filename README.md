@@ -4,8 +4,6 @@ I used the Django framework, prepared few animations and looks good UI experienc
 The project, includes dynamically auto-fill form, different form selection property and dynamically show & filter
 passenger details in the passenger table.
 
-![Logo](https://www.linkpicture.com/q/Main-page1.png)
-![Logo](https://www.linkpicture.com/q/Main-page2.png)
 
     
 ## Demo
@@ -67,6 +65,6 @@ Install requirement packages
 
 
 
-![Uygulama Ekran Görüntüsü](https://www.linkpicture.com/q/mainpage3.jpg)
+
 
   
